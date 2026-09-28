@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacte — FE TintaSuTela SRL</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark">TS</span>
+      <span class="brand-name">FE <b>TintaSuTela</b> SRL</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="despre.html">Despre noi</a></li>
+        <li><a href="catalog.html">Catalogul</a></li>
+        <li><a href="categorii.html">Categorii</a></li>
+        <li><a href="personalizare.html">Personalizare</a></li>
+        <li><a href="contacte.html" class="active">Contacte</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Meniu">☰</button>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumbs">Acasă / Contacte</div>
+    <h1>Contacte</h1>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <div>
+        <div class="eyebrow">Datele noastre</div>
+        <h2>Hai să vorbim despre proiectul tău</h2>
+        <ul class="contact-info">
+          <li><b>Adresă</b>Chișinău, Republica Moldova</li>
+          <li><b>Telefon</b>+373 60 000 000</li>
+          <li><b>E-mail</b>contact@tintasutela.md</li>
+          <li><b>Program</b>Luni – Vineri, 09:00 – 18:00</li>
+        </ul>
+        <div class="map-box">Hartă amplasament — TintaSuTela</div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Formular</div>
+        <h2>Trimite-ne un mesaj</h2>
+        <form class="contact-form" onsubmit="return handleContactSubmit(event)">
+          <div class="field">
+            <label for="nume">Nume</label>
+            <input type="text" id="nume" name="nume" required placeholder="Numele tău">
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required placeholder="exemplu@email.com">
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+373 6X XXX XXX">
+          </div>
+          <div class="field">
+            <label for="mesaj">Mesaj</label>
+            <textarea id="mesaj" name="mesaj" rows="5" required placeholder="Spune-ne despre ideea ta..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-navy">Trimite mesajul</button>
+          <p id="contact-status" style="font-size:13px;color:var(--navy-600);display:none;">Mesajul a fost pregătit — conectați formularul la serverul/e-mailul firmei pentru trimitere reală.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h4>FE TintaSuTela SRL</h4>
+      <p style="color:var(--silver);font-size:14px;">Creăm și personalizăm haine — tricouri, hanorace și chipiuri — după ideile clienților noștri.</p>
+    </div>
+    <div>
+      <h4>Navigare</h4>
+      <a href="despre.html">Despre noi</a>
+      <a href="catalog.html">Catalogul</a>
+      <a href="personalizare.html">Personalizare</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="contacte.html">Datele noastre de contact</a>
+    </div>
+  </div>
+  <div class="bottom">© <span id="year"></span> FE TintaSuTela SRL. Toate drepturile rezervate.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  function handleContactSubmit(e){
+    e.preventDefault();
+    document.getElementById('contact-status').style.display = 'block';
+    e.target.reset();
+    return false;
+  }
+</script>
+</body>
+</html>

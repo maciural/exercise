@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personalizare — FE TintaSuTela SRL</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark">TS</span>
+      <span class="brand-name">FE <b>TintaSuTela</b> SRL</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="despre.html">Despre noi</a></li>
+        <li><a href="catalog.html">Catalogul</a></li>
+        <li><a href="categorii.html">Categorii</a></li>
+        <li><a href="personalizare.html" class="active">Personalizare</a></li>
+        <li><a href="contacte.html">Contacte</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Meniu">☰</button>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="crumbs">Acasă / Personalizare</div>
+    <h1>Personalizează-ți haina</h1>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="configurator">
+
+      <!-- PREVIZUALIZARE -->
+      <div class="preview-panel">
+        <h3 style="color:#fff;margin-bottom:16px;">Previzualizare</h3>
+        <div class="garment-stage">
+          <div class="garment-shape tricou" id="garmentShape">
+            <div class="design-dot" id="designDot">Model<br>față</div>
+          </div>
+        </div>
+        <div class="summary" id="summaryBox">
+          <div><span>Tip haină</span><b id="sumType">Tricou</b></div>
+          <div><span>Mărime</span><b id="sumSize">M</b></div>
+          <div><span>Culoare</span><b id="sumColor">Bleumarin</b></div>
+          <div><span>Design</span><b id="sumDesign">Model geometric</b></div>
+          <div><span>Poziție</span><b id="sumPos">Față</b></div>
+          <div><span>Cantitate</span><b id="sumQty">1</b></div>
+        </div>
+        <div class="price-line">
+          <span>Preț produs</span>
+          <span id="sumPrice">180 MDL</span>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="addToCart()">Adaugă în coș</button>
+      </div>
+
+      <!-- OPȚIUNI -->
+      <div>
+        <form class="config-form" onsubmit="return false;">
+
+          <div class="opt-group">
+            <h3>1. Tip de haină</h3>
+            <div class="opt-row" id="garmentOptions">
+              <button type="button" class="pill active" data-garment="tricou" data-price="180" onclick="selectGarment(this)">Tricou</button>
+              <button type="button" class="pill" data-garment="hanorac" data-price="420" onclick="selectGarment(this)">Hanorac</button>
+              <button type="button" class="pill" data-garment="chipiu" data-price="150" onclick="selectGarment(this)">Chipiu</button>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <h3>2. Mărime</h3>
+            <div class="opt-row" id="sizeOptions">
+              <button type="button" class="pill active" data-size="S" onclick="selectPill(this,'sizeOptions','sumSize')">S</button>
+              <button type="button" class="pill" data-size="M" onclick="selectPill(this,'sizeOptions','sumSize')">M</button>
+              <button type="button" class="pill" data-size="L" onclick="selectPill(this,'sizeOptions','sumSize')">L</button>
+              <button type="button" class="pill" data-size="XL" onclick="selectPill(this,'sizeOptions','sumSize')">XL</button>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <h3>3. Culoarea hainei</h3>
+            <div class="opt-row" id="colorOptions">
+              <span class="swatch active" style="background:#0b1e3d" data-color="Bleumarin" onclick="selectColor(this)"></span>
+              <span class="swatch" style="background:#ffffff" data-color="Alb" onclick="selectColor(this)"></span>
+              <span class="swatch" style="background:#b9c3cf" data-color="Argintiu" onclick="selectColor(this)"></span>
+              <span class="swatch" style="background:#111111" data-color="Negru" onclick="selectColor(this)"></span>
+              <span class="swatch" style="background:#7c1f2a" data-color="Bordo" onclick="selectColor(this)"></span>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <h3>4. Designul</h3>
+            <div class="opt-row" id="designOptions">
+              <button type="button" class="pill active" data-design="Model geometric" onclick="selectPill(this,'designOptions','sumDesign')">Geometric</button>
+              <button type="button" class="pill" data-design="Model floral" onclick="selectPill(this,'designOptions','sumDesign')">Floral</button>
+              <button type="button" class="pill" data-design="Logo minimalist" onclick="selectPill(this,'designOptions','sumDesign')">Logo minimalist</button>
+              <button type="button" class="pill" data-design="Text personalizat" onclick="selectPill(this,'designOptions','sumDesign')">Text / citat</button>
+              <button type="button" class="pill" data-design="Design propriu (încărcat)" onclick="selectPill(this,'designOptions','sumDesign')">Design propriu</button>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <h3>5. Poziția designului <small>pe haină</small></h3>
+            <div class="opt-row" id="posOptions">
+              <button type="button" class="pill active" data-pos="fata" onclick="selectPosition(this)">Față</button>
+              <button type="button" class="pill" data-pos="spate" onclick="selectPosition(this)">Spate</button>
+              <button type="button" class="pill" data-pos="maneca" onclick="selectPosition(this)">Mânecă</button>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <h3>6. Cantitate</h3>
+            <div class="qty-row">
+              <button type="button" onclick="changeQty(-1)">−</button>
+              <input type="number" id="qtyInput" value="1" min="1" max="20" onchange="setQty(this.value)">
+              <button type="button" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- COȘ -->
+        <div class="cart-panel">
+          <h3>Coșul tău</h3>
+          <div id="cartList">
+            <p class="empty-cart">Coșul este gol momentan.</p>
+          </div>
+          <div class="cart-total" id="cartTotal" style="display:none;">
+            <span>Total</span><span id="cartTotalValue">0 MDL</span>
+          </div>
+          <button class="btn btn-navy" style="width:100%;margin-top:18px;" onclick="placeOrder()">Plasează comanda</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h4>FE TintaSuTela SRL</h4>
+      <p style="color:var(--silver);font-size:14px;">Creăm și personalizăm haine — tricouri, hanorace și chipiuri — după ideile clienților noștri.</p>
+    </div>
+    <div>
+      <h4>Navigare</h4>
+      <a href="despre.html">Despre noi</a>
+      <a href="catalog.html">Catalogul</a>
+      <a href="categorii.html">Categorii</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="contacte.html">Datele noastre de contact</a>
+    </div>
+  </div>
+  <div class="bottom">© <span id="year"></span> FE TintaSuTela SRL. Toate drepturile rezervate.</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+<script>
+/* ---------------------------------------------------------
+   Stare curentă a configuratorului
+--------------------------------------------------------- */
+var current = {
+  garment: 'tricou',
+  garmentLabel: 'Tricou',
+  basePrice: 180,
+  size: 'S',
+  color: 'Bleumarin',
+  colorHex: '#0b1e3d',
+  design: 'Model geometric',
+  position: 'fata',
+  positionLabel: 'Față',
+  qty: 1
+};
+
+var cart = [];
+
+/* ---------------------------------------------------------
+   Selectoare de opțiuni (pastile generice)
+--------------------------------------------------------- */
+function clearActive(groupId){
+  document.querySelectorAll('#' + groupId + ' .pill').forEach(function(el){
+    el.classList.remove('active');
+  });
+}
+
+function selectPill(el, groupId, sumId){
+  clearActive(groupId);
+  el.classList.add('active');
+  if (groupId === 'sizeOptions') current.size = el.dataset.size;
+  if (groupId === 'designOptions') current.design = el.dataset.design;
+  document.getElementById(sumId).textContent = el.dataset.size || el.dataset.design;
+  updateSummary();
+}
+
+function selectGarment(el){
+  clearActive('garmentOptions');
+  el.classList.add('active');
+  current.garment = el.dataset.garment;
+  current.garmentLabel = el.textContent;
+  current.basePrice = parseInt(el.dataset.price, 10);
+
+  var shape = document.getElementById('garmentShape');
+  shape.className = 'garment-shape ' + current.garment;
+  shape.style.background = current.colorHex;
+
+  document.getElementById('sumType').textContent = current.garmentLabel;
+  updateSummary();
+}
+
+function selectColor(el){
+  document.querySelectorAll('#colorOptions .swatch').forEach(function(s){
+    s.classList.remove('active');
+  });
+  el.classList.add('active');
+  current.color = el.dataset.color;
+  current.colorHex = el.style.background;
+  document.getElementById('garmentShape').style.background = current.colorHex;
+  document.getElementById('sumColor').textContent = current.color;
+  updateSummary();
+}
+
+function selectPosition(el){
+  clearActive('posOptions');
+  el.classList.add('active');
+  current.position = el.dataset.pos;
+  current.positionLabel = el.textContent;
+
+  var dot = document.getElementById('designDot');
+  var positions = {
+    fata:   { top: '40%', left: '50%', label: 'Model<br>față' },
+    spate:  { top: '40%', left: '50%', label: 'Model<br>spate' },
+    maneca: { top: '55%', left: '18%', label: 'Model<br>mânecă' }
+  };
+  var p = positions[current.position];
+  dot.style.top = p.top;
+  dot.style.left = p.left;
+  dot.innerHTML = p.label;
+
+  document.getElementById('sumPos').textContent = current.positionLabel;
+  updateSummary();
+}
+
+function changeQty(delta){
+  var input = document.getElementById('qtyInput');
+  var val = Math.max(1, Math.min(20, parseInt(input.value, 10) + delta));
+  input.value = val;
+  setQty(val);
+}
+
+function setQty(val){
+  current.qty = Math.max(1, Math.min(20, parseInt(val, 10) || 1));
+  document.getElementById('qtyInput').value = current.qty;
+  document.getElementById('sumQty').textContent = current.qty;
+  updateSummary();
+}
+
+/* ---------------------------------------------------------
+   Sumar preț
+--------------------------------------------------------- */
+function updateSummary(){
+  var total = current.basePrice * current.qty;
+  document.getElementById('sumPrice').textContent = total + ' MDL';
+}
+
+/* ---------------------------------------------------------
+   Coș de cumpărături
+--------------------------------------------------------- */
+function addToCart(){
+  var item = Object.assign({}, current, {
+    id: Date.now(),
+    lineTotal: current.basePrice * current.qty
+  });
+  cart.push(item);
+  renderCart();
+  showToast('Produsul a fost adăugat în coș.');
+}
+
+function removeFromCart(id){
+  cart = cart.filter(function(i){ return i.id !== id; });
+  renderCart();
+}
+
+function renderCart(){
+  var list = document.getElementById('cartList');
+  var totalBox = document.getElementById('cartTotal');
+
+  if (cart.length === 0){
+    list.innerHTML = '<p class="empty-cart">Coșul este gol momentan.</p>';
+    totalBox.style.display = 'none';
+    return;
+  }
+
+  var html = '';
+  var total = 0;
+  cart.forEach(function(item){
+    total += item.lineTotal;
+    html += '<div class="cart-item">' +
+              '<div>' +
+                '<b>' + item.garmentLabel + '</b> — ' + item.design + '<br>' +
+                'Mărime ' + item.size + ' · ' + item.color + ' · ' + item.positionLabel + ' · x' + item.qty +
+              '</div>' +
+              '<div style="text-align:right;">' +
+                item.lineTotal + ' MDL<br>' +
+                '<span class="rm" onclick="removeFromCart(' + item.id + ')">elimină</span>' +
+              '</div>' +
+            '</div>';
+  });
+  list.innerHTML = html;
+  totalBox.style.display = 'flex';
+  document.getElementById('cartTotalValue').textContent = total + ' MDL';
+}
+
+function placeOrder(){
+  if (cart.length === 0){
+    showToast('Adaugă cel puțin un produs în coș înainte de a comanda.');
+    return;
+  }
+  var total = cart.reduce(function(sum, i){ return sum + i.lineTotal; }, 0);
+  showToast('Comanda a fost plasată! Total: ' + total + ' MDL. Vă contactăm pentru confirmare.');
+  cart = [];
+  renderCart();
+  /* Notă pentru dezvoltator: aici se trimit datele comenzii
+     către server / e-mail / sistem de gestiune comenzi. */
+}
+
+/* ---------------------------------------------------------
+   Toast de notificare
+--------------------------------------------------------- */
+var toastTimer;
+function showToast(msg){
+  var toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+updateSummary();
+</script>
+</body>
+</html>
